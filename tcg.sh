@@ -37,23 +37,18 @@ help() {
 	printf '%-25s - %-30s \n' 'deploy' 'Deploy and start all containers at once'
 	printf '%-25s - %-30s \n' 'deployWebserver' 'Deploy and start the webserver'
 	printf '%-25s - %-30s \n' 'deployDB' 'Deploy and start the postgreSQL database'
-	printf '%-25s - %-30s \n\n' 'deployMail' 'Deploy and start the e-mail server\n'
 	printf '%-25s - %-30s \n' 'start' 'Start all containers at once'
 	printf '%-25s - %-30s \n' 'startWebserver' 'Start the webserver'
 	printf '%-25s - %-30s \n' 'startDB' 'Start the postgreSQL database'
-	printf '%-25s - %-30s \n\n' 'startMail' 'Start the e-mail server\n'
 	printf '%-25s - %-30s \n' 'restart' 'Restart all containers at once'
 	printf '%-25s - %-30s \n' 'restartWebserver' 'Restart the webserver'
 	printf '%-25s - %-30s \n' 'restartDB' 'Restart the postgreSQL database'
-	printf '%-25s - %-30s \n\n' 'restartMail' 'Restart the e-mail server\n'
 	printf '%-25s - %-30s \n' 'stop' 'Stop all containers at once'
 	printf '%-25s - %-30s \n' 'stopWebserver' 'Stop the webserver'
 	printf '%-25s - %-30s \n' 'stopDB' 'Stop the postgreSQL database'
-	printf '%-25s - %-30s \n\n' 'stopMail' 'Stop the e-mail server\n'
 	printf '%-25s - %-30s \n' 'remove' 'Remove all containers at once'
 	printf '%-25s - %-30s \n' 'removeWebserver' 'Remove the webserver'
 	printf '%-25s - %-30s \n' 'removeDB' 'Remove the postgreSQL database'
-	printf '%-25s - %-30s \n\n' 'removeMail' 'Remove the e-mail server\n'
 	printf '%-25s - %-30s \n' 'setup' 'Setting up the (Docker) Environment'
 	printf '%-25s - %-30s \n' 'restartDocker' 'Emergency restart of the Docker service'
 	printf '%-25s - %-30s \n' 'status' 'Returns a status of all containers'
@@ -63,7 +58,6 @@ help() {
 deploy(){
 	deployWebserver
 	deployDB
-	deployMail
 }
 deployWebserver() {
 	log ${FUNCNAME[0]} 'Deploying the webserver...'
@@ -74,15 +68,11 @@ deployWebserver() {
 deployDB() {
 	log ${FUNCNAME[0]} 'Deploying the Database...'
 }
-deployMail() {
-	log ${FUNCNAME[0]} 'Deploying the mailserver...'
-}
 
 # Start Functions
 start(){
 	startWebserver
 	startDB
-	startMail
 }
 startWebserver() {
 	log ${FUNCNAME[0]} 'Starting the webserver...'
@@ -90,15 +80,11 @@ startWebserver() {
 startDB() {
 	log ${FUNCNAME[0]} 'Starting the Database...'
 }
-startMail() {
-	log ${FUNCNAME[0]} 'Starting the mailserver...'
-}
 
 # Restart Functions
 restart(){
 	restartWebserver
 	restartDB
-	restartMail
 }
 restartWebserver() {
 	log ${FUNCNAME[0]} 'Restarting the webserver...'
@@ -106,16 +92,12 @@ restartWebserver() {
 restartDB() {
 	log ${FUNCNAME[0]} 'Restarting the Database...'
 }
-restartMail() {
-	log ${FUNCNAME[0]} 'Restarting the mailserver...'
-}
 
 
 # Stop Functions
 stop(){
 	stopWebserver
 	stopDB
-	stopMail
 }
 stopWebserver() {
 	log ${FUNCNAME[0]} 'Stopping the webserver...'
@@ -123,25 +105,18 @@ stopWebserver() {
 stopDB() {
 	log ${FUNCNAME[0]} 'Stopping the Database...'
 }
-stopMail() {
-	log ${FUNCNAME[0]} 'Stopping the mailserver...'
-}
 
 
 # Removal Functions
 remove(){
 	removeWebserver
 	removeDB
-	removeMail
 }
 removeWebserver() {
 	log ${FUNCNAME[0]} 'Removing the webserver...'
 } 
 removeDB() {
 	log ${FUNCNAME[0]} 'Removing the Database...'
-}
-removeMail() {
-	log ${FUNCNAME[0]} 'Removing the mailserver...'
 }
 
 
