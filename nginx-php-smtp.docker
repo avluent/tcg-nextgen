@@ -1,0 +1,19 @@
+#####################################################
+
+# Dockerfile to build the NGINX image with Drupal and
+# a SMTP module based on Ubuntu Bionic Beaver
+
+#####################################################
+
+# Set the base image
+FROM ubuntu
+
+# File author/maintainer
+MAINTAINER Jos Avezaat
+
+
+################ BEGIN INSTALLATION #################
+
+# Update repo sources list and install dependencies
+RUN apt-get update
+RUN apt-get install -y nginx php-fpm php-pgsql mailutils
