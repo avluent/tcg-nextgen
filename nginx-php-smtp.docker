@@ -15,9 +15,16 @@ MAINTAINER Jos Avezaat
 
 # Update repo sources list and install dependencies
 RUN apt-get update
-RUN apt-get install -y nginx php7.2 php7.2-fpm php7.2-pgsql ssmtp
+RUN apt-get install -y nginx php7.2 php7.2-fpm php7.2-pgsql ssmtp git
 
+# Download and extract Drupal
+RUN cd /usr/share/nginx \
+	&& git clone --branch 8.6.x https://git.drupal.org/project/drupal.git \
+	&& find . -type f -name drupal* | tar -xzf $1 \
+	&& find . -type d -name drupal* | mv $1 html \
+	&& find . -type f -name drupal* | rm $1
 
+# Copy Themes, Modules and Settings
 
 
 
@@ -27,4 +34,4 @@ RUN apt-get install -y nginx php7.2 php7.2-fpm php7.2-pgsql ssmtp
 ADD ./php /etc/php/7.2/fpm/
 ADD ./nginx /etc/nginx/
 ADD ./smtp /etc/ssmtp/
-ADD ./www /usr/share/nginx/html
+ADD ./www /var/www
