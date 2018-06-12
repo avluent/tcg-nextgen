@@ -61,8 +61,8 @@ deploy(){
 }
 deployWebserver() {
 	log ${FUNCNAME[0]} 'Deploying the webserver...'
-	# Run the docker command as Docker user
-	$DOCKER_SHELL docker run --name=web -d -v $DOCKER_DIR/web/log:/var/log/nginx -p 8000:80 -p 4430:443 nginx
+		# Start the docker file to build the docker container
+			
 	log ${FUNCNAME[0]} "Webserver is deployed successfully..."
 }
 deployDB() {
@@ -149,7 +149,7 @@ setup() {
 		log ${FUNCNAME[0]} "Working Directory Created..."	
 
 		# Add the user
-		useradd -r -d $DOCKER_DIR -g $DOCKER_GROUP -G sudo -s /bin/bash $DOCKER_USER
+		useradd -r -d $DOCKER_DIR -g $DOCKER_GROUP -G sudo -s /dev/null $DOCKER_USER
 		log ${FUNCNAME[0]} "Docker user created..."	
 
 		# Owning the folders
@@ -161,7 +161,7 @@ setup() {
 		log ${FUNCNAME[0]} 'Password was set correctly...'
 
 		# Output the Done message
-		log ${FUNCNAME[0]} "SetupDocker done..."
+		log ${FUNCNAME[0]} "Setup completed..."
 	fi
 
 }
@@ -173,9 +173,9 @@ restartDocker() {
 status() {
 	if  cat /etc/passwd | grep -q $DOCKER_USER;then
 		systemctl status docker | grep active
-		$DOCKER_SHELL docker info
+		sudo docker info
 		log ${FUNCNAME[0]} 'Getting the Docker swarm status information...\n'
-		$DOCKER_SHELL docker ps
+		sudo docker ps -a
 	else
 		log ${FUNCNAME[0]} "Docker user not installed. Type setupDocker first..."
 	fi

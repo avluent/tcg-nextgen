@@ -1,0 +1,2 @@
+Mo 11. Jun 09:43:00 CEST 2018 - status - Getting the Docker swarm status information...\n
+Mo 11. Jun 09:43:37 CEST 2018 - status - Getting the Docker swarm status information...\n
